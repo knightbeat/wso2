@@ -1,0 +1,9 @@
+<metadata xmlns="http://www.wso2.org/governance/metadata">
+    <overview>
+        <name>HRMDB</name>
+        <version>1.0.0</version>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://192.168.56.101/hrmdb</url>
+        <jndi>jdbc/hrmdb</jndi>
+    </overview>
+</metadata>
