@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="TCPProxy"
+       transports="tcp"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <log level="custom">
+            <property name="Proxy" value="Invoked"/>
+         </log>
+         <log level="full"/>
+         <property name="OUT_ONLY" value="true"/>
+         <send>
+            <endpoint>
+               <address uri="tcp://127.0.0.1:500"/>
+            </endpoint>
+         </send>
+      </inSequence>
+   </target>
+   <parameter name="transport.tcp.port">6061</parameter>
+   <parameter name="transport.tcp.contentType">text/plain</parameter>
+   <description/>
+</proxy>
+                                
