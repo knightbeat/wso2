@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-	name="RegistryReadProxy"
-	transports="https,http"
+    name="RegistryReadProxy"
+    transports="https,http"
     statistics="disable"
     trace="disable"
     startOnLoad="true"> 
-   	<target>
-      	<inSequence>
-         	<property name="dbconf" expression="get-property('registry','gov:/applications/database/HRMDB/1.0.0/params')" scope="default" type="OM"/>
-         	<log level="custom">
-            	<property xmlns:gov="http://www.wso2.org/governance/metadata" name="DB NAME" expression="$ctx:dbconf//gov:name"/>
-				<property xmlns:gov="http://www.wso2.org/governance/metadata" name="VERSION" expression="$ctx:dbconf//gov:version"/>
-				<property xmlns:gov="http://www.wso2.org/governance/metadata" name="DRIVER NAME" expression="$ctx:dbconf//gov:driver"/>
-				<property xmlns:gov="http://www.wso2.org/governance/metadata" name="URL" expression="$ctx:dbconf//gov:url"/>
-				<property xmlns:gov="http://www.wso2.org/governance/metadata" name="JNDI" expression="$ctx:dbconf//gov:jndi"/>
-         	</log>
-        	<drop/>
-      	</inSequence>
-   	</target>
-   	<description/>
+    <target>
+        <inSequence>
+            <property name="dbconf" expression="get-property('registry','gov:/applications/database/HRMDB/1.0.0/params')" scope="default" type="OM"/>
+            <log level="custom">
+                <property xmlns:gov="http://www.wso2.org/governance/metadata" name="DB NAME" expression="$ctx:dbconf//gov:name"/>
+                <property xmlns:gov="http://www.wso2.org/governance/metadata" name="VERSION" expression="$ctx:dbconf//gov:version"/>
+                <property xmlns:gov="http://www.wso2.org/governance/metadata" name="DRIVER NAME" expression="$ctx:dbconf//gov:driver"/>
+                <property xmlns:gov="http://www.wso2.org/governance/metadata" name="URL" expression="$ctx:dbconf//gov:url"/>
+                <property xmlns:gov="http://www.wso2.org/governance/metadata" name="JNDI" expression="$ctx:dbconf//gov:jndi"/>
+            </log>
+            <drop/>
+        </inSequence>
+    </target>
+    <description/>
 </proxy>

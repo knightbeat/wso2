@@ -6,4 +6,4 @@
 		<url>jdbc:mysql://192.168.56.101/hrmdb</url>
 		<jndi>jdbc/hrmdb</jndi>
 	</overview>
-</metadata>                                
+</metadata>
