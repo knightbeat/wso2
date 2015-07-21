@@ -4,7 +4,7 @@
 	transports="https,http"
     statistics="disable"
     trace="disable"
-    startOnLoad="true">
+    startOnLoad="true"> 
    	<target>
       	<inSequence>
          	<property name="dbconf" expression="get-property('registry','gov:/applications/database/HRMDB/1.0.0/params')" scope="default" type="OM"/>
