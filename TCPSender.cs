@@ -15,7 +15,7 @@ namespace Communication.Tcp
         static void Main(string[] args)
         {
             string input = "Sample text comes form dot net TEXT VALUE";
-            string IpAddressOfESB = "192.168.56.101";
+            string IpAddressOfESB = "127.0.0.1";
             int TCPPortOfESB = 6061;
 
             IPEndPoint ip = new IPEndPoint(IPAddress.Parse(IpAddressOfESB), TCPPortOfESB);
