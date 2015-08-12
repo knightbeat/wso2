@@ -1,0 +1,28 @@
+<order>
+    <item>
+        <partNumber>872-AA</partNumber>
+        <productName>Lawnmower</productName>
+        <totalPrice></totalPrice>
+        <delivery>
+            <name>Ellen Adams</name>
+            <street>123 Maple Street</street>
+            <city>Mill Valley</city>
+            <state>CA</state>
+            <zip>10999</zip>
+            <country>USA</country>
+        </delivery>
+    </item>
+    <item>
+        <partNumber>872-AA</partNumber>
+        <productName>Lawnmower</productName>
+        <totalPrice></totalPrice>
+        <delivery>
+            <name>Ellen Adams</name>
+            <street>123 Maple Street</street>
+            <city>Mill Valley</city>
+            <state>CA</state>
+            <zip>10999</zip>
+            <country>USA</country>
+        </delivery>
+    </item>
+</order>
