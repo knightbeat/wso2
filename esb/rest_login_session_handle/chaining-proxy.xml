@@ -1,11 +1,11 @@
-<proxy xmlns="http://ws.apache.org/ns/synapse" name="ClovisProxy01" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="SampleProxyService" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
     <target>
         <inSequence>
             <log level="custom">
                 <property name="PROXY" value="LOCATED" />
             </log>
             <payloadFactory media-type="json">
-                <format>{ "login": "admin@teste.com", "senha": "123456"}</format>
+                <format>{ "login": "admin@teachingbad.com", "password": "123456"}</format>
                 <args/>
             </payloadFactory>
             <log level="full" />
