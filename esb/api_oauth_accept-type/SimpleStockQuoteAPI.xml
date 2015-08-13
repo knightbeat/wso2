@@ -1,42 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <api xmlns="http://ws.apache.org/ns/synapse" name="SimpleStockQuoteAPI" context="/stocks">
-	<resource methods="GET" uri-template="/quote/{symbol}">
-		<inSequence>
-			<oauthService remoteServiceUrl="https://192.168.56.101:9443/services/" username="admin" password="admin"></oauthService>
-			<log level="custom">
-				<property name="LOCATED" value="SimpleStockQuoteAPI/stocks/quote - inSequence"></property>
-			</log>
-			<property name="ResponseContentType" expression="syn:get-property('transport','Accept')" scope="default" type="STRING"></property>
-			<log level="custom">
-				<property name="RESPONSE CONTENT" expression="syn:get-property('ResponseContentType')"></property>
-			</log>
-			<payloadFactory media-type="xml">
-				<format>
-					<ser:getQuote xmlns:ser="http://services.samples" xmlns:xsd="http://services.samples/xsd">
-						<ser:request>
-							<xsd:symbol>$1</xsd:symbol>
-						</ser:request>
-					</ser:getQuote>
-				</format>
-				<args>
-					<arg evaluator="xml" expression="get-property('uri.var.symbol')"></arg>
-				</args>
-			</payloadFactory>
-			<header name="Action" value="urn:getQuote"></header>
-			<log level="full"></log>
-			<send>
-				<endpoint>
-					<address uri="http://192.168.56.101:9000/services/SimpleStockQuoteService" format="soap11"></address>
-				</endpoint>
-			</send>
-		</inSequence>
-		<outSequence>
-			<log level="custom">
-				<property name="LOCATED" value="SimpleStockQuoteAPI/stocks/quote - outSequence"></property>
-			</log>
-			<log level="full"></log>
-			<property name="messageType" expression="syn:get-property('ResponseContentType')" scope="axis2" type="STRING"></property>
-			<send></send>
-		</outSequence>
-	</resource>
+    <resource methods="GET" uri-template="/quote/{symbol}">
+        <inSequence>
+            <oauthService remoteServiceUrl="https://192.168.56.101:9443/services/" username="admin" password="admin"></oauthService>
+            <log level="custom">
+                <property name="LOCATED" value="SimpleStockQuoteAPI/stocks/quote - inSequence"></property>
+            </log>
+            <property name="ResponseContentType" expression="syn:get-property('transport','Accept')" scope="default" type="STRING"></property>
+            <log level="custom">
+                <property name="RESPONSE CONTENT" expression="syn:get-property('ResponseContentType')"></property>
+            </log>
+            <payloadFactory media-type="xml">
+                <format>
+                    <ser:getQuote xmlns:ser="http://services.samples" xmlns:xsd="http://services.samples/xsd">
+                        <ser:request>
+                            <xsd:symbol>$1</xsd:symbol>
+                        </ser:request>
+                    </ser:getQuote>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('uri.var.symbol')"></arg>
+                </args>
+            </payloadFactory>
+            <header name="Action" value="urn:getQuote"></header>
+            <log level="full"></log>
+            <send>
+                <endpoint>
+                    <address uri="http://192.168.56.101:9000/services/SimpleStockQuoteService" format="soap11"></address>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log level="custom">
+                <property name="LOCATED" value="SimpleStockQuoteAPI/stocks/quote - outSequence"></property>
+            </log>
+            <log level="full"></log>
+            <property name="messageType" expression="syn:get-property('ResponseContentType')" scope="axis2" type="STRING"></property>
+            <send></send>
+        </outSequence>
+    </resource>
 </api>
