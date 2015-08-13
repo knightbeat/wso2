@@ -1,0 +1,35 @@
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="ClovisProxy01" transports="https,http" statistics="disable" trace="disable" startOnLoad="true">
+	<target>
+		<inSequence>
+			<log level="custom">
+				<property name="PROXY" value="LOCATED" />
+			</log>
+			<payloadFactory media-type="json">
+				<format>{ "login": "admin@teste.com", "senha": "123456"}</format>
+				<args/>
+			</payloadFactory>
+			<log level="full" />
+			<header name="Action" action="remove" />
+			<property name="messageType" value="application/json" scope="axis2" />
+			<call>
+				<endpoint>
+					<http method="post" uri-template="http://192.168.56.101:8290/SGTWebApp/rest/security/login" />
+				</endpoint>
+			</call>
+			<!--extract Set-Cookie transport header : JSESSIONID-->
+			<property name="cookie" expression="syn:get-property('transport','Set-Cookie')" scope="default" type="STRING" />
+			<log level="custom">
+				<property name="COOKIE" expression="syn:get-property('cookie')" />
+			</log>
+			<!--sets Cookie transport header : JSESSIONID-->
+			<property name="Cookie" expression="syn:get-property('cookie')" scope="transport" />
+			<call>
+				<endpoint>
+					<http method="get" uri-template="http://192.168.56.101:8290/SGTWebApp/rest/gestao/AtendimentoStatus" />
+				</endpoint>
+			</call>
+			<respond/>
+		</inSequence>
+	</target>
+	<description/>
+</proxy>

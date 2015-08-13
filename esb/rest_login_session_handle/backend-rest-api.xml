@@ -1,0 +1,23 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="SGTWebAppAPI" context="/SGTWebApp/rest">
+	<resource methods="POST" uri-template="/security/login">
+		<inSequence>
+			<payloadFactory media-type="json">
+				<format>{ "login": "true" }</format>
+				<args></args>
+			</payloadFactory>
+			<!--mocks the login endpoint setting a transport header called Set-Cookie-->
+			<property name="Set-Cookie" value="JSESSIONID=CB49879558D4EF965BE172E1D07346A9" scope="transport"></property>
+			<respond></respond>
+		</inSequence>
+	</resource>
+	<resource methods="GET" uri-template="/gestao/AtendimentoStatus">
+		<inSequence>
+			<!--extracts the Cookie header sent by the proxy service and print it to verify that it has arrived the REST API with second invocation-->
+			<property name="LoginCookie" expression="syn:get-property('transport','Cookie')" scope="default" type="STRING"></property>
+			<log level="custom">
+				<property name="LOGIN-COOKIE" expression="syn:get-property('LoginCookie')"></property>
+			</log>
+			<respond></respond>
+		</inSequence>
+	</resource>
+</api>
