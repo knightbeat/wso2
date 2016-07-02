@@ -9,7 +9,7 @@
         <target>
             <inSequence>
                 <property name="ROOT" scope="default">
-                    <p:CreditSummary xmlns:p="http://www.mindtree.com"/>
+                    <p:CreditSummary xmlns:p="http://www.demo.com"/>
                 </property>
                 <clone>
                     <target>
