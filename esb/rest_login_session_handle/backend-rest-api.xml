@@ -6,7 +6,7 @@
                 <args></args>
             </payloadFactory>
             <!--mocks the login endpoint setting a transport header called Set-Cookie-->
-            <property name="Set-Cookie" value="JSESSIONID=CB49879558D4EF965BE172E1D07346A9" scope="transport"></property>
+            <property name="Set-Cookie" value="JSESSIONID=***" scope="transport"></property>
             <respond></respond>
         </inSequence>
     </resource>
